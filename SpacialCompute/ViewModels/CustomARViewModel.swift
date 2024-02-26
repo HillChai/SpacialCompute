@@ -17,12 +17,14 @@ import Combine
 //}
 
 
-class CustomARViewModel: ARView, ARSessionDelegate {
+class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     
-    @Published var CameraState: String = "Not Start"
+    @Published var CameraState: String = "NotStartNotStartNotStartNotStartNotStart"
     
-    var actionStream = PassthroughSubject<ARCamera.TrackingState, Never>()
-    private var cancellables: Set<AnyCancellable> = []
+    //photosRecordingSymbol
+    @Published var photoFlag: Bool = false
+    //attitudeRecordingSymbol
+    @Published var attitudeFlag: Bool = false
     
     func StartSession() {
         let configuration = ARWorldTrackingConfiguration()
@@ -35,20 +37,40 @@ class CustomARViewModel: ARView, ARSessionDelegate {
         session.pause()
     }
     
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
-//        actionStream
-//            .sink { [weak self] action in
-//                switch action {
-//                case .notAvailable:
-//                    self?.CameraState = "notAvailable"
-//                case .limited:
-//                    self?.CameraState = "limited"
-//                case .normal:
-//                    self?.CameraState = "normal"
-//                }
-//            }
-//            .store(in: &cancellables)
-        CameraState = frame.camera.trackingState.presentationString
+    func StartRecordingPhotos() {
+        photoFlag = true
     }
     
+    func SavePhotos() {
+    }
+    
+    func StopRecordingPhotos() {
+        photoFlag = false
+    }
+    
+    func StartRecordingAttitudes() {
+        attitudeFlag = true
+    }
+    
+    func SaveAttitudes() {
+    }
+    
+    func StopRecordingAttitudes() {
+        attitudeFlag = false
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        CameraState = frame.camera.trackingState.presentationString
+        
+        if photoFlag == true {
+            SavePhotos()
+        }
+        
+        if attitudeFlag == true {
+            SaveAttitudes()
+        }
+    }
+ 
 }
+
+

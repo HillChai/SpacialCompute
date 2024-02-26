@@ -23,16 +23,18 @@ struct ContinueButton: View {
             refreshIsNeeded += 1
             
             if countinuousIsOn {
-                ARViewModel.StartSession()
+                ARViewModel.StartRecordingPhotos()
+                ARViewModel.StartRecordingAttitudes()
             } else {
-                ARViewModel.StopSession()
+                ARViewModel.StopRecordingPhotos()
+                ARViewModel.StopRecordingAttitudes()
             }
             
             
         } label: {
             Image(systemName: countinuousIsOn ? "stop.circle.fill" : "play.circle.fill")
                 .resizable()
-                .foregroundStyle(.white)
+                .foregroundStyle(.red)
                 .frame(width: 55, height: 55)
         }
         
@@ -45,5 +47,5 @@ struct ContinueButton: View {
 
 #Preview {
     ContinueButton(refreshIsNeeded: .constant(0), countinuousIsOn: .constant(false))
-        .background(Color.red)
+//        .background(Color.red)
 }

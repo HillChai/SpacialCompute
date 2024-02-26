@@ -17,51 +17,51 @@ struct ContentView: View {
     @State var countinuousIsOn: Bool = false
     
     //ARView
-    let customARView = CustomARView.instance
+    @StateObject var customARView = CustomARView.instance
     
     var body: some View {
         NavigationStack {
             ZStack  {
                 
                 ARViewContainer()
+                    .frame(height: 615)
+                    .offset(y:16)
                 
                 VStack {
+                    HStack {
+                        Text(customARView.CameraState)
+                            .font(.title2)
+                            .truncationMode(.tail)
+                            .lineLimit(1)
+                        
+                        Image("bluetooth")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .sheet(isPresented: $isPresent, content: {
+                                BlueTooth()
+                            })
+                            .onTapGesture(perform: {
+                                isPresent.toggle()
+                            })
+                        
+                        Button {
+                            refreshIsNeeded = 0
+                            countinuousIsOn = false
+                            customARView.StopSession()
+                            customARView.StartSession()
+                            
+                        } label: {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .resizable()
+                                .foregroundStyle(.black)
+                                .frame(width: 30, height: 30)
+                        }
+                    }
                     
                     Spacer()
                     
                     ContinueButton(refreshIsNeeded: $refreshIsNeeded, countinuousIsOn: $countinuousIsOn)
                         .padding()
-                }
-                
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Text(customARView.CameraState)
-                        .font(.title2)
-                }
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    
-                    Image("bluetooth")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .sheet(isPresented: $isPresent, content: {
-                            BlueTooth()
-                        })
-                        .onTapGesture(perform: {
-                            isPresent.toggle()
-                        })
-                    
-                    Button {
-                        refreshIsNeeded = 0
-                        countinuousIsOn = false
-                        customARView.StartSession()
-                        
-                    } label: {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .resizable()
-                            .foregroundStyle(.black)
-                            .frame(width: 30, height: 30)
-                    }
                 }
                 
             }
