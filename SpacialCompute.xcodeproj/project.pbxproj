@@ -14,11 +14,12 @@
 		4B58B50E2B89BCB800D9D2B5 /* CustomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */; };
 		4B58B5102B89DC9100D9D2B5 /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */; };
 		4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */; };
-		4B58B5152B89F3BC00D9D2B5 /* TrackingStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5142B89F3BC00D9D2B5 /* TrackingStateViewModel.swift */; };
 		4B7C564D2B88A5C400FD9A9F /* SpacialComputeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C564C2B88A5C400FD9A9F /* SpacialComputeApp.swift */; };
 		4B7C564F2B88A5C400FD9A9F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C564E2B88A5C400FD9A9F /* ContentView.swift */; };
 		4B7C56512B88A5C600FD9A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7C56502B88A5C600FD9A9F /* Assets.xcassets */; };
 		4B7C56542B88A5C600FD9A9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7C56532B88A5C600FD9A9F /* Preview Assets.xcassets */; };
+		4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */; };
+		4B8265A72B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,13 +30,15 @@
 		4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARViewModel.swift; sourceTree = "<group>"; };
 		4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTooth.swift; sourceTree = "<group>"; };
 		4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
-		4B58B5142B89F3BC00D9D2B5 /* TrackingStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingStateViewModel.swift; sourceTree = "<group>"; };
 		4B58B5162B8CBC3400D9D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4B7C56492B88A5C400FD9A9F /* SpacialCompute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacialCompute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7C564C2B88A5C400FD9A9F /* SpacialComputeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacialComputeApp.swift; sourceTree = "<group>"; };
 		4B7C564E2B88A5C400FD9A9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B7C56502B88A5C600FD9A9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B7C56532B88A5C600FD9A9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4B8265A32B8CD14A009FC0A2 /* SpacialCompute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpacialCompute.entitlements; sourceTree = "<group>"; };
+		4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attitudesPhotosBLE.swift; sourceTree = "<group>"; };
+		4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attitudesPhotosBLEViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */,
-				4B58B5142B89F3BC00D9D2B5 /* TrackingStateViewModel.swift */,
+				4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -89,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */,
+				4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +116,7 @@
 		4B7C564B2B88A5C400FD9A9F /* SpacialCompute */ = {
 			isa = PBXGroup;
 			children = (
+				4B8265A32B8CD14A009FC0A2 /* SpacialCompute.entitlements */,
 				4B58B5162B8CBC3400D9D2B5 /* Info.plist */,
 				4B7C564C2B88A5C400FD9A9F /* SpacialComputeApp.swift */,
 				4B58B5112B89DD5100D9D2B5 /* Models */,
@@ -207,12 +212,13 @@
 				4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */,
 				4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */,
 				4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */,
+				4B8265A72B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift in Sources */,
 				4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */,
 				4B7C564F2B88A5C400FD9A9F /* ContentView.swift in Sources */,
+				4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */,
 				4B58B50E2B89BCB800D9D2B5 /* CustomARViewModel.swift in Sources */,
 				4B58B50B2B89BC4C00D9D2B5 /* ARViewContainer.swift in Sources */,
 				4B7C564D2B88A5C400FD9A9F /* SpacialComputeApp.swift in Sources */,
-				4B58B5152B89F3BC00D9D2B5 /* TrackingStateViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpacialCompute/SpacialCompute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpacialCompute/Preview Content\"";
@@ -366,6 +373,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccc.SpacialCompute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -377,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpacialCompute/SpacialCompute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpacialCompute/Preview Content\"";
@@ -400,6 +412,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccc.SpacialCompute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
