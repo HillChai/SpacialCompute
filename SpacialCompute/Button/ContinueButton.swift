@@ -23,10 +23,8 @@ struct ContinueButton: View {
             refreshIsNeeded += 1
             
             if countinuousIsOn {
-                ARViewModel.StartRecordingPhotos()
                 ARViewModel.StartRecordingAttitudes()
             } else {
-                ARViewModel.StopRecordingPhotos()
                 ARViewModel.StopRecordingAttitudes()
             }
             
