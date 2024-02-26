@@ -17,9 +17,9 @@ import Combine
 //}
 
 
-class CustomARViewModel: ARView, ARSessionDelegate {
+class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     
-    @Published var CameraState: String = "Not Start"
+    @Published var CameraState: String = "NotStart"
     
     var actionStream = PassthroughSubject<ARCamera.TrackingState, Never>()
     private var cancellables: Set<AnyCancellable> = []
@@ -36,19 +36,9 @@ class CustomARViewModel: ARView, ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-//        actionStream
-//            .sink { [weak self] action in
-//                switch action {
-//                case .notAvailable:
-//                    self?.CameraState = "notAvailable"
-//                case .limited:
-//                    self?.CameraState = "limited"
-//                case .normal:
-//                    self?.CameraState = "normal"
-//                }
-//            }
-//            .store(in: &cancellables)
         CameraState = frame.camera.trackingState.presentationString
     }
-    
+ 
 }
+
+

@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var countinuousIsOn: Bool = false
     
     //ARView
-    let customARView = CustomARView.instance
+    @StateObject var customARView = CustomARView.instance
     
     var body: some View {
         NavigationStack {
