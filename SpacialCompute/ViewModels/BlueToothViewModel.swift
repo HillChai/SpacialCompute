@@ -21,7 +21,7 @@ class BlueToothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
     
     static var instance = BlueToothViewModel()
     
-    private var centralManager = CBCentralManager()
+    var centralManager: CBCentralManager!
     @Published var peripheralStatus: ConnectionStatus = .disconnected
     
     // BlueTooth Configurations
@@ -30,20 +30,25 @@ class BlueToothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
     public var savedCharacteristicUUID: String = UserDefaults.standard.string(forKey: "CharacteristicUUID") ?? "FFE1"
     
     //BlueTooth connected
-    weak var discoveredPeripheral: CBPeripheral?
-    @Published var data = ""
-    public var completemessage = ["not start"]
+    var discoveredPeripheral: CBPeripheral?
+    var data = ""
+    public var completemessage = ""
+    
+    override init() {
+        super.init()
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
+    
+    func scanForPeripherals() {
+        peripheralStatus = .scanning
+        centralManager.scanForPeripherals(withServices: nil)
+    }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             print("CB is powered on")
             scanForPeripherals()
         }
-    }
-    
-    func scanForPeripherals() {
-        peripheralStatus = .scanning
-        centralManager.scanForPeripherals(withServices: nil)
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -81,23 +86,34 @@ class BlueToothViewModel: NSObject, ObservableObject, CBCentralManagerDelegate, 
             }
         }
     }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        for characteristic in service.characteristics ?? [] {
+            peripheral.setNotifyValue(true, for: characteristic)
+            print("Characteristics from \(characteristic.uuid.uuidString) Found!")
+        }
+    }
  
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if characteristic.uuid == CBUUID(string: savedCharacteristicUUID) {
             guard let characteristicData = characteristic.value,
                   let stringFromData = String(data: characteristicData, encoding: .utf8) else { return }
             
-            if !stringFromData.hasPrefix("\r\n") {
+            if !stringFromData.hasSuffix("\r\n") {
                 data.append(stringFromData)
+//                print(data)
             } else {
                 data.append(stringFromData)
+//                print(data)
+                completemessage = data
                 
-                if completemessage.count <= 2 {
-                    completemessage.append(data)
-                } else {
-                    completemessage.remove(at: 0)
-                    completemessage.append(data)
-                }
+//                if self.completemessage.count <= 2 {
+//                    self.completemessage.append(self.data)
+//                } else {
+//                    print(self.completemessage)
+//                    self.completemessage.remove(at: 0)
+//                    self.completemessage.append(self.data)
+//                }
                 
                 data = ""
             }
