@@ -27,11 +27,12 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     @Published var attitudeFlag: Bool = false
     
     //savePath
-    private var recordingTime: String  = ""
+    @Published var recordingTime: String  = ""
     private var currentTime: String = ""
     
     //attitudes, photos, BLE
     private var jsonObject: [attitudesPhotosBLE] = []
+    let BLE = BlueToothViewModel.instance
     
     func StartSession() {
         let configuration = ARWorldTrackingConfiguration()
@@ -120,7 +121,7 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         
         guard let path = getPathForImage(folderName: recordingTime, name: currentTime) else { return }
 //        print("path: \(path)")
-    
+        
         do {
             try uiImage?.write(to: path)
             print("Image wrote successfully!!")
@@ -158,8 +159,6 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         let eulerAngles = arCamera.eulerAngles
         let frameData = attitudesPhotosBLE(id: currentTime, position: [positions.x, positions.y, positions.z], eulerAngle: [eulerAngles.x, eulerAngles.y, eulerAngles.z], BLEmessage: "BLE")
         
-//        guard let jsonData = try? JSONEncoder().encode(frameData) else { return }
-//        jsonObject.append(frameData)
         jsonObject.append(frameData)
     }
     
@@ -173,26 +172,22 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
                 let bigData = try? JSONEncoder().encode(jsonObject)
                 try bigData?.write(to: path, options: [.atomic])
                 print("Json finished")
+                jsonObject.removeAll()
             } catch let error {
                 print("Errors: \(error)")
             }
         }
-        
-        jsonObject.removeAll()
-        recordingTime = ""
-        
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         CameraState = frame.camera.trackingState.presentationString
         
-//            SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)
         if attitudeFlag == true {
-//            DispatchQueue.global(qos: .userInitiated).async {
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .userInteractive).async {
                 self.SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)  // update currentTime
-                self.SaveAttitudes(currentframe: frame)
             }
+                self.SaveAttitudes(currentframe: frame)
+//            }
         }
         
     }

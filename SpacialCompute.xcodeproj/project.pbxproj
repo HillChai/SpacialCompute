@@ -19,7 +19,7 @@
 		4B7C56512B88A5C600FD9A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7C56502B88A5C600FD9A9F /* Assets.xcassets */; };
 		4B7C56542B88A5C600FD9A9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7C56532B88A5C600FD9A9F /* Preview Assets.xcassets */; };
 		4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */; };
-		4B8265A72B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */; };
+		4B8265A92B8DC184009FC0A2 /* BlueToothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8265A82B8DC184009FC0A2 /* BlueToothViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		4B7C56532B88A5C600FD9A9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4B8265A32B8CD14A009FC0A2 /* SpacialCompute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpacialCompute.entitlements; sourceTree = "<group>"; };
 		4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attitudesPhotosBLE.swift; sourceTree = "<group>"; };
-		4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attitudesPhotosBLEViewModel.swift; sourceTree = "<group>"; };
+		4B8265A82B8DC184009FC0A2 /* BlueToothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */,
-				4B8265A62B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift */,
+				4B8265A82B8DC184009FC0A2 /* BlueToothViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,11 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8265A92B8DC184009FC0A2 /* BlueToothViewModel.swift in Sources */,
 				4B58B5102B89DC9100D9D2B5 /* BlueTooth.swift in Sources */,
 				4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */,
 				4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */,
 				4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */,
-				4B8265A72B8D7C73009FC0A2 /* attitudesPhotosBLEViewModel.swift in Sources */,
 				4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */,
 				4B7C564F2B88A5C400FD9A9F /* ContentView.swift in Sources */,
 				4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */,

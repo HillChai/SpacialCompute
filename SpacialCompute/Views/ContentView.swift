@@ -49,7 +49,7 @@ struct ContentView: View {
                             countinuousIsOn = false
                             customARView.StopSession()
                             customARView.StartSession()
-                            
+                            customARView.recordingTime = ""
                         } label: {
                             Image(systemName: "arrow.triangle.2.circlepath")
                                 .resizable()
