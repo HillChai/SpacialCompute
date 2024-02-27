@@ -45,11 +45,11 @@ struct ContentView: View {
                             })
                         
                         Button {
-                            refreshIsNeeded = 0
-                            countinuousIsOn = false
                             customARView.StopSession()
+                            countinuousIsOn = false
+                            customARView.StopRecordingAttitudes()
+                            refreshIsNeeded = 0
                             customARView.StartSession()
-                            customARView.recordingTime = ""
                         } label: {
                             Image(systemName: "arrow.triangle.2.circlepath")
                                 .resizable()

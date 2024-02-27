@@ -28,7 +28,6 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     
     //savePath
     @Published var recordingTime: String  = ""
-    private var currentTime: String = ""
     
     //attitudes, photos, BLE
     private var jsonObject: [attitudesPhotosBLE] = []
@@ -116,15 +115,13 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         
         let uiImage = UIImage(cgImage: cgImage, scale: 1, orientation: .right).jpegData(compressionQuality: 1.0)
         
-        currentTime = String(format: "%f", currentFrame.timestamp)
-//        print("currentTime: \(currentTime)")
+        let currentTime = String(format: "%f", currentFrame.timestamp)
         
         guard let path = getPathForImage(folderName: recordingTime, name: currentTime) else { return }
-//        print("path: \(path)")
         
         do {
             try uiImage?.write(to: path)
-            print("Image wrote successfully!!")
+//            print("Image wrote successfully!!")
         } catch let error {
             print("Error saving. \(error)")
         }
@@ -154,17 +151,19 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     }
     
     func SaveAttitudes(currentframe: ARFrame) {
+        let currentTime = String(format: "%f", currentframe.timestamp)
         let arCamera = currentframe.camera
         let positions = positionFromTransform(arCamera.transform)
         let eulerAngles = arCamera.eulerAngles
-        let frameData = attitudesPhotosBLE(id: currentTime, position: [positions.x, positions.y, positions.z], eulerAngle: [eulerAngles.x, eulerAngles.y, eulerAngles.z], BLEmessage: "BLE")
+        let BLEmessages = BLE.completemessage
+        let frameData = attitudesPhotosBLE(id: currentTime, position: [positions.x, positions.y, positions.z], eulerAngle: [eulerAngles.x, eulerAngles.y, eulerAngles.z], BLEmessage: BLEmessages)
         
         jsonObject.append(frameData)
     }
     
     func StopRecordingAttitudes() {
         attitudeFlag = false
-        print(jsonObject)
+//        print(jsonObject)
         
         if recordingTime != "" {
             guard let path = getPathForJson(folderName: recordingTime, name: recordingTime) else { return }
@@ -183,8 +182,9 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         CameraState = frame.camera.trackingState.presentationString
         
         if attitudeFlag == true {
+            
             DispatchQueue.global(qos: .userInteractive).async {
-                self.SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)  // update currentTime
+                self.SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)
             }
                 self.SaveAttitudes(currentframe: frame)
 //            }
