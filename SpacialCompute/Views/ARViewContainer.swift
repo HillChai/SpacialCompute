@@ -14,7 +14,11 @@ struct ARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> some UIView {
         
-        return CustomARView.instance
+        let arView = CustomARView.instance
+        
+        arView.debugOptions = [.showFeaturePoints]   //Product -> Scheme -> Edit Scheme -> Run -> Diagnostic -> Metal
+        
+        return arView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {

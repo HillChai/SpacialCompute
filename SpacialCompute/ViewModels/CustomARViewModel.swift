@@ -19,18 +19,21 @@ import Combine
 
 class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     
-    @Published var CameraState: String = "NotStartNotStartNotStartNotStartNotStart"
+//    @Published var CameraState: String = "NotStartNotStartNotStartNotStartNotStart"
+    @Published var sessionInfolLabel: String = ""
     
     //photosRecordingSymbol
     @Published var photoFlag: Bool = false
     //attitudeRecordingSymbol
     @Published var attitudeFlag: Bool = false
     
+    @Published var snapFlag: Bool = false
+    
     //savePath
     @Published var recordingTime: String  = ""
     
     //attitudes, photos, BLE
-    private var jsonObject: [attitudesPhotosBLE] = []
+    var jsonObject: [attitudesPhotosBLE] = []
     let BLE = BlueToothViewModel.instance
     
     func StartSession() {
@@ -42,65 +45,6 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
     
     func StopSession() {
         session.pause()
-    }
-    
-    // 1. Check whether the folder exitst
-    func createFolderIfNeeded(fileFolder folderName: String) {
-        guard
-            let path = FileManager
-                .default
-                .urls(for: .documentDirectory, in: .userDomainMask)
-                .first?
-                .appendingPathComponent(folderName)
-                .path else { return }
-        
-        //Check whether the target folder exists.
-        if !FileManager.default.fileExists(atPath: path) {
-            do {
-                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true)
-                print("Success creating folder.")
-            } catch let error {
-                print("Error creating folder. \(error)")
-            }
-        }
-        
-        print("Folder Created!")
-    }
-    
-    // 2. Get the path to save photos
-    func getPathForImage(folderName: String, name: String) -> URL? {
-//        createFolderIfNeeded(fileFolder: folderName)
-        
-        guard
-            let path = FileManager
-                .default
-                .urls(for: .documentDirectory, in: .userDomainMask)
-                .first?
-                .appendingPathComponent(folderName)
-                .appendingPathComponent("\(name).jpg") else {
-            print("Error getting image path.")
-            return nil
-        }
-        
-//        print("Image path exists!")
-        return path
-    }
-    
-    func getPathForJson(folderName: String, name: String) -> URL? {
-        
-        guard
-            let path = FileManager
-                .default
-                .urls(for: .documentDirectory, in: .userDomainMask)
-                .first?
-                .appendingPathComponent(folderName)
-                .appendingPathComponent("\(name).json") else {
-            print("Error getting json path.")
-            return nil
-        }
-        
-        print("Json path created!")
-        return path
     }
     
     // 3. Save it
@@ -119,35 +63,14 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         
         guard let path = getPathForImage(folderName: recordingTime, name: currentTime) else { return }
         
-        do {
-            try uiImage?.write(to: path)
-//            print("Image wrote successfully!!")
-        } catch let error {
-            print("Error saving. \(error)")
+        DispatchQueue.global(qos: .utility).async {
+            do {
+                try uiImage?.write(to: path)
+    //            print("Image wrote successfully!!")
+            } catch let error {
+                print("Error saving. \(error)")
+            }
         }
-        
-    }
-    
-    func StartRecordingAttitudes() {
-        attitudeFlag = true
-        
-        recordingTime = getFolderName()
-        createFolderIfNeeded(fileFolder: recordingTime)
-        
-    }
-    
-    func getFolderName() -> String {
-        let date = Date()
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: date)
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let second = calendar.component(.second, from: date)
-        return String(day)+"-"+String(hour)+"-"+String(minutes)+"-"+String(second)
-    }
-    
-    func positionFromTransform(_ transform: matrix_float4x4) -> SCNVector3 {
-        return SCNVector3Make(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
     }
     
     func SaveAttitudes(currentframe: ARFrame) {
@@ -159,6 +82,82 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         let frameData = attitudesPhotosBLE(id: currentTime, position: [positions.x, positions.y, positions.z], eulerAngle: [eulerAngles.x, eulerAngles.y, eulerAngles.z], BLEmessage: BLEmessages)
         
         jsonObject.append(frameData)
+    }
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        updateSessionInfoLabel(for: session.currentFrame!, trackingState: camera.trackingState)
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+//        CameraState = frame.camera.trackingState.presentationString
+        
+        if snapFlag == true {
+            
+            SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)
+            SaveAttitudes(currentframe: frame)
+            
+            snapFlag = false
+        }
+        
+        
+        if attitudeFlag == true {
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)
+            }
+                self.SaveAttitudes(currentframe: frame)
+        }
+        
+    }
+ 
+}
+
+// Mark: Private Method
+extension CustomARViewModel {
+    
+    private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
+        // Update the UI to provide feedback on the state of the AR experience.
+        let message: String
+
+        switch trackingState {
+        case .normal where frame.anchors.isEmpty:
+            // No planes detected; provide instructions for this app's AR interactions.
+            message = "Move the device around to detect horizontal and vertical surfaces."
+            
+        case .notAvailable:
+            message = "Tracking unavailable."
+            
+        case .limited(.excessiveMotion):
+            message = "Tracking limited - Move the device more slowly."
+            
+        case .limited(.insufficientFeatures):
+            message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
+            
+        case .limited(.initializing):
+            message = "Initializing AR session."
+            
+        default:
+            // No feedback needed when tracking is normal and planes are visible.
+            // (Nor when in unreachable limited-tracking states.)
+            message = ""
+
+        }
+
+        sessionInfolLabel = message
+    }
+    
+}
+
+// Mark: Video Recording
+
+extension CustomARViewModel {
+    
+    func StartRecordingAttitudes() {
+        attitudeFlag = true
+        
+        recordingTime = getFolderName()
+        createFolderIfNeeded(fileFolder: recordingTime)
+        
     }
     
     func StopRecordingAttitudes() {
@@ -178,20 +177,5 @@ class CustomARViewModel: ARView, ARSessionDelegate, ObservableObject {
         }
     }
     
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        CameraState = frame.camera.trackingState.presentationString
-        
-        if attitudeFlag == true {
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.SavePhotos(currentFrame: frame, pixelBuffer: frame.capturedImage)
-            }
-                self.SaveAttitudes(currentframe: frame)
-//            }
-        }
-        
-    }
- 
 }
-
 

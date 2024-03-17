@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B23E50B2BA69FAF00C0D721 /* StreamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */; };
+		4B23E50D2BA6A3F600C0D721 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */; };
+		4B23E5112BA6B01300C0D721 /* FileWriteWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */; };
 		4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5022B8979C800D9D2B5 /* ContinueButton.swift */; };
 		4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5052B897C8800D9D2B5 /* CustomARView.swift */; };
 		4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingView.swift; sourceTree = "<group>"; };
+		4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
+		4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriteWorkflow.swift; sourceTree = "<group>"; };
 		4B58B5022B8979C800D9D2B5 /* ContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButton.swift; sourceTree = "<group>"; };
 		4B58B5052B897C8800D9D2B5 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
@@ -67,6 +73,8 @@
 				4B58B50A2B89BC4C00D9D2B5 /* ARViewContainer.swift */,
 				4B58B5052B897C8800D9D2B5 /* CustomARView.swift */,
 				4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */,
+				4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */,
+				4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -75,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */,
+				4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */,
 			);
 			path = "Utility Extensions";
 			sourceTree = "<group>";
@@ -210,11 +219,14 @@
 			files = (
 				4B8265A92B8DC184009FC0A2 /* BlueToothViewModel.swift in Sources */,
 				4B58B5102B89DC9100D9D2B5 /* BlueTooth.swift in Sources */,
+				4B23E50D2BA6A3F600C0D721 /* SnapshotView.swift in Sources */,
 				4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */,
 				4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */,
 				4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */,
+				4B23E5112BA6B01300C0D721 /* FileWriteWorkflow.swift in Sources */,
 				4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */,
 				4B7C564F2B88A5C400FD9A9F /* ContentView.swift in Sources */,
+				4B23E50B2BA69FAF00C0D721 /* StreamingView.swift in Sources */,
 				4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */,
 				4B58B50E2B89BCB800D9D2B5 /* CustomARViewModel.swift in Sources */,
 				4B58B50B2B89BC4C00D9D2B5 /* ARViewContainer.swift in Sources */,
