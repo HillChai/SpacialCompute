@@ -10,10 +10,13 @@
 		4B23E50B2BA69FAF00C0D721 /* StreamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */; };
 		4B23E50D2BA6A3F600C0D721 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */; };
 		4B23E5112BA6B01300C0D721 /* FileWriteWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */; };
-		4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5022B8979C800D9D2B5 /* ContinueButton.swift */; };
-		4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5052B897C8800D9D2B5 /* CustomARView.swift */; };
+		4B23E5132BA7401700C0D721 /* VideoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5122BA7401700C0D721 /* VideoProcessor.swift */; };
+		4B23E5152BA7475400C0D721 /* VideoFrameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5142BA7475400C0D721 /* VideoFrameData.swift */; };
+		4B23E5172BA7E8A700C0D721 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5162BA7E8A700C0D721 /* Matrix.swift */; };
+		4B23E5192BA7E9B500C0D721 /* SIMD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5182BA7E9B500C0D721 /* SIMD+Extensions.swift */; };
+		4B23E5212BA9C86500C0D721 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23E5202BA9C86500C0D721 /* ARViewContainer.swift */; };
+		4B58B5032B8979C800D9D2B5 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5022B8979C800D9D2B5 /* RecordingButton.swift */; };
 		4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */; };
-		4B58B50B2B89BC4C00D9D2B5 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B50A2B89BC4C00D9D2B5 /* ARViewContainer.swift */; };
 		4B58B50E2B89BCB800D9D2B5 /* CustomARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */; };
 		4B58B5102B89DC9100D9D2B5 /* BlueTooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */; };
 		4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */; };
@@ -29,15 +32,18 @@
 		4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingView.swift; sourceTree = "<group>"; };
 		4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriteWorkflow.swift; sourceTree = "<group>"; };
-		4B58B5022B8979C800D9D2B5 /* ContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButton.swift; sourceTree = "<group>"; };
-		4B58B5052B897C8800D9D2B5 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		4B23E5122BA7401700C0D721 /* VideoProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProcessor.swift; sourceTree = "<group>"; };
+		4B23E5142BA7475400C0D721 /* VideoFrameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFrameData.swift; sourceTree = "<group>"; };
+		4B23E5162BA7E8A700C0D721 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		4B23E5182BA7E9B500C0D721 /* SIMD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SIMD+Extensions.swift"; sourceTree = "<group>"; };
+		4B23E5202BA9C86500C0D721 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		4B58B5022B8979C800D9D2B5 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 		4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraTrackingState.swift; sourceTree = "<group>"; };
-		4B58B50A2B89BC4C00D9D2B5 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARViewModel.swift; sourceTree = "<group>"; };
 		4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTooth.swift; sourceTree = "<group>"; };
 		4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
 		4B58B5162B8CBC3400D9D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		4B7C56492B88A5C400FD9A9F /* SpacialCompute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacialCompute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B7C56492B88A5C400FD9A9F /* SpacialCompute_no_navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacialCompute_no_navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7C564C2B88A5C400FD9A9F /* SpacialComputeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacialComputeApp.swift; sourceTree = "<group>"; };
 		4B7C564E2B88A5C400FD9A9F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B7C56502B88A5C600FD9A9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +67,7 @@
 		4B58B5012B8979AB00D9D2B5 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				4B58B5022B8979C800D9D2B5 /* ContinueButton.swift */,
+				4B58B5022B8979C800D9D2B5 /* RecordingButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -70,11 +76,10 @@
 			isa = PBXGroup;
 			children = (
 				4B7C564E2B88A5C400FD9A9F /* ContentView.swift */,
-				4B58B50A2B89BC4C00D9D2B5 /* ARViewContainer.swift */,
-				4B58B5052B897C8800D9D2B5 /* CustomARView.swift */,
-				4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */,
-				4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */,
 				4B23E50C2BA6A3F600C0D721 /* SnapshotView.swift */,
+				4B23E50A2BA69FAF00C0D721 /* StreamingView.swift */,
+				4B58B50F2B89DC9100D9D2B5 /* BlueTooth.swift */,
+				4B23E5202BA9C86500C0D721 /* ARViewContainer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -84,6 +89,8 @@
 			children = (
 				4B58B5082B89B81500D9D2B5 /* ARCameraTrackingState.swift */,
 				4B23E5102BA6B01300C0D721 /* FileWriteWorkflow.swift */,
+				4B23E5162BA7E8A700C0D721 /* Matrix.swift */,
+				4B23E5182BA7E9B500C0D721 /* SIMD+Extensions.swift */,
 			);
 			path = "Utility Extensions";
 			sourceTree = "<group>";
@@ -93,6 +100,7 @@
 			children = (
 				4B58B50D2B89BCB800D9D2B5 /* CustomARViewModel.swift */,
 				4B8265A82B8DC184009FC0A2 /* BlueToothViewModel.swift */,
+				4B23E5122BA7401700C0D721 /* VideoProcessor.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 			children = (
 				4B58B5122B89DD6400D9D2B5 /* Peripheral.swift */,
 				4B8265A42B8D7345009FC0A2 /* attitudesPhotosBLE.swift */,
+				4B23E5142BA7475400C0D721 /* VideoFrameData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,7 +126,7 @@
 		4B7C564A2B88A5C400FD9A9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B7C56492B88A5C400FD9A9F /* SpacialCompute.app */,
+				4B7C56492B88A5C400FD9A9F /* SpacialCompute_no_navigation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,9 +159,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B7C56482B88A5C400FD9A9F /* SpacialCompute */ = {
+		4B7C56482B88A5C400FD9A9F /* SpacialCompute_no_navigation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B7C56572B88A5C600FD9A9F /* Build configuration list for PBXNativeTarget "SpacialCompute" */;
+			buildConfigurationList = 4B7C56572B88A5C600FD9A9F /* Build configuration list for PBXNativeTarget "SpacialCompute_no_navigation" */;
 			buildPhases = (
 				4B7C56452B88A5C400FD9A9F /* Sources */,
 				4B7C56462B88A5C400FD9A9F /* Frameworks */,
@@ -162,9 +171,9 @@
 			);
 			dependencies = (
 			);
-			name = SpacialCompute;
+			name = SpacialCompute_no_navigation;
 			productName = SpacialCompute;
-			productReference = 4B7C56492B88A5C400FD9A9F /* SpacialCompute.app */;
+			productReference = 4B7C56492B88A5C400FD9A9F /* SpacialCompute_no_navigation.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -182,7 +191,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4B7C56442B88A5C400FD9A9F /* Build configuration list for PBXProject "SpacialCompute" */;
+			buildConfigurationList = 4B7C56442B88A5C400FD9A9F /* Build configuration list for PBXProject "SpacialCompute_no_navigation" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -195,7 +204,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B7C56482B88A5C400FD9A9F /* SpacialCompute */,
+				4B7C56482B88A5C400FD9A9F /* SpacialCompute_no_navigation */,
 			);
 		};
 /* End PBXProject section */
@@ -217,19 +226,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B23E5132BA7401700C0D721 /* VideoProcessor.swift in Sources */,
 				4B8265A92B8DC184009FC0A2 /* BlueToothViewModel.swift in Sources */,
 				4B58B5102B89DC9100D9D2B5 /* BlueTooth.swift in Sources */,
 				4B23E50D2BA6A3F600C0D721 /* SnapshotView.swift in Sources */,
+				4B23E5172BA7E8A700C0D721 /* Matrix.swift in Sources */,
 				4B58B5132B89DD6400D9D2B5 /* Peripheral.swift in Sources */,
+				4B23E5212BA9C86500C0D721 /* ARViewContainer.swift in Sources */,
 				4B58B5092B89B81500D9D2B5 /* ARCameraTrackingState.swift in Sources */,
-				4B58B5032B8979C800D9D2B5 /* ContinueButton.swift in Sources */,
+				4B58B5032B8979C800D9D2B5 /* RecordingButton.swift in Sources */,
 				4B23E5112BA6B01300C0D721 /* FileWriteWorkflow.swift in Sources */,
-				4B58B5062B897C8800D9D2B5 /* CustomARView.swift in Sources */,
+				4B23E5192BA7E9B500C0D721 /* SIMD+Extensions.swift in Sources */,
 				4B7C564F2B88A5C400FD9A9F /* ContentView.swift in Sources */,
 				4B23E50B2BA69FAF00C0D721 /* StreamingView.swift in Sources */,
+				4B23E5152BA7475400C0D721 /* VideoFrameData.swift in Sources */,
 				4B8265A52B8D7345009FC0A2 /* attitudesPhotosBLE.swift in Sources */,
 				4B58B50E2B89BCB800D9D2B5 /* CustomARViewModel.swift in Sources */,
-				4B58B50B2B89BC4C00D9D2B5 /* ARViewContainer.swift in Sources */,
 				4B7C564D2B88A5C400FD9A9F /* SpacialComputeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -346,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -437,7 +449,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B7C56442B88A5C400FD9A9F /* Build configuration list for PBXProject "SpacialCompute" */ = {
+		4B7C56442B88A5C400FD9A9F /* Build configuration list for PBXProject "SpacialCompute_no_navigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B7C56552B88A5C600FD9A9F /* Debug */,
@@ -446,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B7C56572B88A5C600FD9A9F /* Build configuration list for PBXNativeTarget "SpacialCompute" */ = {
+		4B7C56572B88A5C600FD9A9F /* Build configuration list for PBXNativeTarget "SpacialCompute_no_navigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B7C56582B88A5C600FD9A9F /* Debug */,

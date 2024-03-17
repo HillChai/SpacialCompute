@@ -1,29 +1,45 @@
 //
-//  UIView.swift
+//  ARViewContainer.swift
 //  SpacialCompute
 //
-//  Created by cccc on 2024/2/24.
+//  Created by cccc on 2024/3/19.
 //
 
 import Foundation
 import SwiftUI
 
-struct ARViewContainer: UIViewRepresentable {
+struct SnapshotContainer: UIViewRepresentable {
     
-    static var instance = ARViewContainer()
+    static var instance = SnapshotContainer()
     
     func makeUIView(context: Context) -> some UIView {
-        
-        let arView = CustomARView.instance
-        
-        arView.debugOptions = [.showFeaturePoints]   //Product -> Scheme -> Edit Scheme -> Run -> Diagnostic -> Metal
-        
+        let arView = ARViewContainer.instanceForSnapshot
+//        arView.debugOptions = [.showFeaturePoints]
+            
         return arView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
     }
     
+}
+
+struct RecordingContainer: UIViewRepresentable {
     
+    static var instance = RecordingContainer()
     
+    func makeUIView(context: Context) -> some UIView {
+        let arView = ARViewContainer.instanceForRecording
+//        arView.debugOptions = [.showFeaturePoints]   //Product -> Scheme -> Edit Scheme -> Run -> Diagnostic -> Metal
+        return arView
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+    }
+    
+}
+
+struct ARViewContainer {
+    static var instanceForRecording = CustomARViewModel()
+    static var instanceForSnapshot = CustomARViewModel()
 }

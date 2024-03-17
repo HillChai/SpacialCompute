@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B7C56482B88A5C400FD9A9F"
-               BuildableName = "SpacialCompute.app"
-               BlueprintName = "SpacialCompute"
-               ReferencedContainer = "container:SpacialCompute.xcodeproj">
+               BuildableName = "SpacialCompute_no_navigation.app"
+               BlueprintName = "SpacialCompute_no_navigation"
+               ReferencedContainer = "container:SpacialCompute_no_navigation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B7C56482B88A5C400FD9A9F"
-            BuildableName = "SpacialCompute.app"
-            BlueprintName = "SpacialCompute"
-            ReferencedContainer = "container:SpacialCompute.xcodeproj">
+            BuildableName = "SpacialCompute_no_navigation.app"
+            BlueprintName = "SpacialCompute_no_navigation"
+            ReferencedContainer = "container:SpacialCompute_no_navigation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B7C56482B88A5C400FD9A9F"
-            BuildableName = "SpacialCompute.app"
-            BlueprintName = "SpacialCompute"
-            ReferencedContainer = "container:SpacialCompute.xcodeproj">
+            BuildableName = "SpacialCompute_no_navigation.app"
+            BlueprintName = "SpacialCompute_no_navigation"
+            ReferencedContainer = "container:SpacialCompute_no_navigation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

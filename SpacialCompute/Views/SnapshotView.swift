@@ -8,31 +8,56 @@
 import SwiftUI
 
 struct SnapshotView: View {
-    //Refresh Bool
-    @State var refreshIsNeeded: Int = 0
-    //play or stop button
-    @State var countinuousIsOn: Bool = false
+    
+    @State var isPresent: Bool = false
     
     //ARView
-    @StateObject var customARView = CustomARView.instance
+    let customARView = ARViewContainer.instanceForSnapshot
     
     var body: some View {
+        
         ZStack  {
             
-            ARViewContainer()
-//                .frame(height: 615)
-//                .offset(y:16)
+            SnapshotContainer.instance
+                .ignoresSafeArea()
             
             VStack {
+                HStack {
+                    
+                    Image(systemName: "gearshape")
+                        .resizable()
+                        .foregroundStyle(Color.white)
+                        .frame(width: 35, height: 35)
+                        .padding()
+                        .sheet(isPresented: $isPresent, content: {
+                            BlueTooth()
+                        })
+                        .onTapGesture(perform: {
+                            isPresent.toggle()
+                        })
+                    
+                    Spacer()
+                    
+                    Button {
+                        customARView.StartSession {
+                        }
+                        customARView.recordingTime = getFolderName()
+                        createFolderIfNeeded(fileFolder: customARView.recordingTime)
+                    } label: {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 30, height: 30)
+                    }
+                    .padding()
+                }
                 
                 Spacer()
                 
                 Text(customARView.sessionInfolLabel)
-                    .padding(.horizontal)
                     .background(Color.yellow)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     
-                
                 HStack {
                     
                     Button(action: {
@@ -69,36 +94,12 @@ struct SnapshotView: View {
                 
             }
             
-            
-            
         }
-        .toolbar(content: {
-//            ToolbarItem(placement: .topBarLeading) {
-//                Text(customARView.CameraState)
-//                    .font(.title2)
-//                    .truncationMode(.tail)
-//                    .lineLimit(1)
-//            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    customARView.StopSession()
-                    countinuousIsOn = false
-                    customARView.StopRecordingAttitudes()
-                    refreshIsNeeded = 0
-                    customARView.StartSession()
-                    customARView.recordingTime = getFolderName()
-                    createFolderIfNeeded(fileFolder: customARView.recordingTime)
-                } label: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .resizable()
-                        .foregroundStyle(.blue)
-                        .frame(width: 30, height: 30)
-                }
-            }
-        })
+        
     }
 }
+
+
 
 #Preview {
     SnapshotView()

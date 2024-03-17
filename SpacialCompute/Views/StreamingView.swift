@@ -6,58 +6,75 @@
 //
 
 import SwiftUI
-import RealityKit
 
 struct StreamingView: View {
     
-    
-    //Refresh Bool
-    @State var refreshIsNeeded: Int = 0
+    @State var showAlert: Bool = false
+    //BLE Settings
+    @State var isPresent: Bool = false
     //play or stop button
-    @State var countinuousIsOn: Bool = false
+    @State var isRecording: Bool = false
     
     //ARView
-    @StateObject var customARView = CustomARView.instance
+    let customARView = ARViewContainer.instanceForRecording
     
     var body: some View {
         ZStack  {
             
-            ARViewContainer()
+            RecordingContainer.instance
+                .ignoresSafeArea()
             
             VStack {
+                HStack {
+                    
+                    Image(systemName: "gearshape")
+                        .resizable()
+                        .foregroundStyle(Color.white)
+                        .frame(width: 35, height: 35)
+                        .padding()
+                        .sheet(isPresented: $isPresent, content: {
+                            BlueTooth()
+                        })
+                        .onTapGesture(perform: {
+                            isPresent.toggle()
+                        })
+                
+                    Spacer()
+                    
+                    Button {
+                        isRecording = false
+                        customARView.StartSession {
+                            customARView.GetWidthAndHeight()
+                        }
+                        showAlert.toggle()
+                    } label: {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 35, height: 35)
+                    }
+                    .padding()
+                    .alert(isPresented: $showAlert) {
+                        return Alert(title: Text("请横屏拍摄以获得更好体验🚀"))
+                    }
+                }
+                
                 Spacer()
                 
                 Text(customARView.sessionInfolLabel)
-                    .padding(.horizontal)
                     .background(Color.yellow)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 
-                ContinueButton(refreshIsNeeded: $refreshIsNeeded, countinuousIsOn: $countinuousIsOn)
+                RecordingButton(isRecording: $isRecording)
                     .padding()
                 
             }
         }
-        .toolbar(content: {
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    customARView.StopSession()
-                    countinuousIsOn = false
-                    customARView.StopRecordingAttitudes()
-                    refreshIsNeeded = 0
-                    customARView.StartSession()
-                } label: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .resizable()
-                        .foregroundStyle(.blue)
-                        .frame(width: 30, height: 30)
-                }
-            }
-        })
-        
     }
     
 }
+
+
 
 #Preview {
     StreamingView()

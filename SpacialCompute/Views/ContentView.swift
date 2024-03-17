@@ -9,56 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //BLE Settings
-    @State var isPresent: Bool = false
-    
-    //ARView
-    @StateObject var customARView = CustomARView.instance
-    
-    
+    @State var currentSelected: Int = 0
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 40) {
+        
+        TabView(selection: $currentSelected) {
             
-                Spacer()
-                
-                NavigationLink {
-                    SnapshotView()
-                } label: {
-                    Text("拍照模式")
-                        .font(.title)
-                        .padding()
-                        .padding()
+            SnapshotView()
+                .tabItem {
+                    Image(systemName: "camera")
+                    Text("照片")
                 }
-
-                NavigationLink {
-                    StreamingView()
-                } label: {
-                    Text("视频模式")
-                        .font(.title)
-                        .padding()
-                        .padding()
-                }
+                .tag(0)
+                .onDisappear(perform: {
+                    ARViewContainer.instanceForSnapshot.recordingTime = ""
+                })
                 
-                Spacer()
-                
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Image(systemName: "gearshape")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                        .sheet(isPresented: $isPresent, content: {
-                            BlueTooth()
-                        })
-                        .onTapGesture(perform: {
-                            isPresent.toggle()
-                        })
+            
+            StreamingView()
+                .tabItem {
+                    Image(systemName: "video.fill")
+                    Text("视频")
                 }
-            }
+                .tag(1)
+                .onDisappear(perform: {
+                    ARViewContainer.instanceForRecording.recordingTime = ""
+                })
+    
         }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        
     }
+    
 }
 
 #Preview {

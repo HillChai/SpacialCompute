@@ -8,8 +8,9 @@
 import Foundation
 
 struct CustomARView {
-    static var instance = CustomARViewModel()
+    static var instanceForRecording = CustomARViewModel()
     
+    static var instanceForSnapshot = CustomARViewModel()
 }
 
 
