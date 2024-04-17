@@ -2,4 +2,4 @@
 * 左上角的是需要配对的BLE蓝牙设置，右上角的是AR追踪刷新按钮
 * 屏幕中黄色字幕提示当前ARKit追踪质量，没有字幕时表示一切正常，有字幕时可能等待一下就会自动消失
 
-<img src="Original.jpeg" width="200">
+<img src="Original.jpeg">
